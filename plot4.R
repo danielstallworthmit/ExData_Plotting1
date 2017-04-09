@@ -1,6 +1,7 @@
 library(data.table)
 # Set up data using filtered data from plot1
 data_filtered <- fread("household_consumption_filtered.csv",sep = ",",header = T)
+# Add DateTime column as combination of Date and Time columns
 data_filtered <- within(data_filtered, DateTime <- paste(Date, Time, sep = " "))
 data_filtered$DateTime <- as.POSIXct(data_filtered$DateTime,tz = "GMT")
 
